@@ -1,0 +1,42 @@
+#This function represents the turn of Player 1
+def player_1(n):
+    if n!=0:
+        #Taking the input from user to enter the number of chocolates they want to remove by player_1
+        x=int(input(f"How many chocolates{"\U0001F36C"} you want to remove by player_1(1 or 2): "))
+        if x==1 or x==2:
+            #Removes the chosen chocolates from the total
+            n=n-x
+            print('Chocolate Left: ',n)
+            #Calls the player_2 function with the updated number of chocolates
+            return player_2(n)
+    else:
+        #If there are no chocolates left, Player 2 wins
+        print("Player 2 wins",end='') 
+        print("\U0001F389") 
+        print(f"Winner Winner Chocolate Dinner{"\U0001F36C"} {"\U0001F603"}")
+#This function represents the turn of Player 2            
+def player_2(n):    
+    if n!=0:
+        #Checks if the number of chocolates left is even    
+        if n%2==0:
+            #If even, Player 2 takes 2 chocolates
+            n=n-2
+            print(f"Player 2 took 2 chocolates{"\U0001F36C"}")
+            print('Chocolate Left: ',n)
+            #Calls the player_1 function with the updated number of chocolates
+            return player_1(n)
+        else:
+            #If odd, Player 2 takes 1 chocolate
+            n=n-1
+            print(f"Player 2 took 1 chocolates{"\U0001F36C"}")
+            print('Chocolate Left: ',n)
+            #Calls the player_1 function with the updated number of chocolates
+            return player_1(n) 
+    else:
+        #If there are no chocolates left, Player 1 wins
+        print("player 1 wins",end='')
+        print("\U0001F389")
+        print(f"Winner Winner Chocolate Dinner{"\U0001F36C"} {"\U0001F603"}")
+#Taking input from the user to enter the initial number of chocolates in bowl
+n=int(input(f"Enter the Chocolates{"\U0001F36C"}: "))
+player_1(n)
